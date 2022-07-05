@@ -23,7 +23,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1
+        dotnet-version: 5.0.202
 
     - name: Run tests and collect coverage
       run: dotnet test --collect:"XPlat Code Coverage"
@@ -32,7 +32,7 @@ jobs:
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
 
     - name: Make coverage report
-      run: reportgenerator "-reports:Sender\SenderTests\SenderTests\TestResults\*\*.xml" "-targetdir:coverage"
+      run: reportgenerator "-reports:SenderTests\TestResults\*\*.xml" "-targetdir:coverage"
     
     - name: Create coverage artifact
       uses: actions/upload-artifact@v2
@@ -40,9 +40,3 @@ jobs:
         name: coverage
         path: coverage
         retention-days: 21
-    
-    - name: Run project
-      run:  dotnet run --project ./Sender/Sender/Sender.csproj
-    
-       
-    
