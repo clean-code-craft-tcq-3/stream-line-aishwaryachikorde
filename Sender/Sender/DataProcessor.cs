@@ -27,11 +27,7 @@ namespace Sender
       while (!streamReader.EndOfStream)
       {
         string[] parameterColumn = streamReader.ReadLine()?.Split(',');
-
-        if (parameterColumn != null)
-        {
-          inputReadingList.Add(new SensorParameter { Temperature = float.Parse(parameterColumn[0]), StateOfCharge = float.Parse(parameterColumn[1]) });
-        }
+        inputReadingList.Add(new SensorParameter { Temperature = float.Parse(parameterColumn[0]), StateOfCharge = float.Parse(parameterColumn[1]) });
       }
 
       return inputReadingList;
