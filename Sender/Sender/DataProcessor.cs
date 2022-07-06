@@ -21,7 +21,7 @@ namespace Sender
     {
       List<SensorParameter> inputReadingList = new List<SensorParameter>();
 
-      string fileDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, "SensorReading.csv");
+       string fileDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SensorReading.csv");
 
       using StreamReader streamReader = new StreamReader(fileDirectory);
       while (!streamReader.EndOfStream)
