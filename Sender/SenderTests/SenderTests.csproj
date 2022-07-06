@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sender\Sender.csproj" />
-    <ProjectReference Include="..\Sender\Sender.csproj" />
+     <ProjectReference Include="..\Sender\Sender.csproj" />
   </ItemGroup>
 
   <ItemGroup>
