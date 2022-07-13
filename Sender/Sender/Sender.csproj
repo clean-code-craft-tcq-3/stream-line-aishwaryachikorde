@@ -11,10 +11,4 @@
     <None Remove="ConsoleApp1\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="SensorReading.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
