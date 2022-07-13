@@ -18,13 +18,16 @@ namespace SenderTests
     [TestMethod("Test to convert the reading into the json format")]
     public void ConvertInputToJsonTest()
     {
+      List<SensorParameter> parameterList = new List<SensorParameter>();
       SensorParameter sensorData = new SensorParameter { Temperature = 9, StateOfCharge = 10 };
+      parameterList.Add(sensorData);
 
-      string jsonString = DataProcessor.ConvertInputToJsonFormat(sensorData);
+      string jsonString = DataProcessor.ConvertInputToJsonFormat(parameterList);
 
-      string expectedString = "{\"Temperature\":9,\"StateOfCharge\":10}";
+      string expectedString = "[{\"Temperature\":9,\"StateOfCharge\":10}]";
 
       Assert.AreEqual(jsonString, expectedString);
     }
   }
 }
+
