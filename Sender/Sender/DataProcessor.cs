@@ -40,12 +40,10 @@ namespace Sender
     public static List<SensorParameter> ReadInputData()
     {
       string workingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-      if (workingDirectory != null)
-      {
+  
         CreateNewCsvFile(workingDirectory);
         GenerateSensorData(workingDirectory);
-      }
+      
 
       List<SensorParameter> inputReadingList = new List<SensorParameter>();
 
