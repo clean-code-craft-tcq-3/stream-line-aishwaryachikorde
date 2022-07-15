@@ -31,9 +31,9 @@ namespace Sender
       using StreamWriter writer = File.AppendText(Path.Combine(fileDirectory, "SensorReading.csv"));
       for (int i = 1; i <= 50; i++)
       {
-        int number1 = temperatureData.Next(0, 45);
-        int number2 = stateOfChargeData.Next(20, 80);
-        writer.Write(number1 + "," + number2 + "\n");
+        int temperatureDataValue = temperatureData.Next(0, 45);
+        int chargeDataValue = stateOfChargeData.Next(20, 80);
+        writer.Write(temperatureDataValue + "," + chargeDataValue + "\n");
       }
     }
 
@@ -68,8 +68,8 @@ namespace Sender
 
     private static void LogSensorReadingsOnConsole(List<SensorParameter> sensorDataReadings)
     {
-       string readingInJson = ConvertInputToJsonFormat(sensorDataReadings); 
-       Console.WriteLine(readingInJson);
+       string jsonFormatReading = ConvertInputToJsonFormat(sensorDataReadings); 
+       Console.WriteLine(jsonFormatReading);
     }
   }
 }
