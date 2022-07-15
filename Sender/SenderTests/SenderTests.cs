@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sender;
 
@@ -13,6 +15,15 @@ namespace SenderTests
       List<SensorParameter> inputReadings = DataProcessor.ReadInputData();
 
       Assert.AreEqual(inputReadings.Count, 50);
+    }
+
+    [TestMethod("Test to check if the csv file is generated")]
+    public void CreateNewCsvFileTest()
+    {
+      string workingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      File.Create(Path.Combine(workingDirectory, "TestSensorReading.csv"));
+
+      Assert.IsTrue(File.Exists(workingDirectory+ "/TestSensorReading.csv"));
     }
 
     [TestMethod("Test to convert the reading into the json format")]
@@ -30,4 +41,6 @@ namespace SenderTests
     }
   }
 }
+
+
 
