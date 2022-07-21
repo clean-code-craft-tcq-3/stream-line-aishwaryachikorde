@@ -25,12 +25,12 @@ namespace Receiver
 
     private static void printOnConsole(float maxTemperature, float minTemperature, float minSOC, float maxSOC, float socAverage, float temperatureAverage)
     {
-      Console.WriteLine("Maximum temperature:",maxTemperature);
-      Console.WriteLine("Minimum temperature:", minTemperature); 
-      Console.WriteLine("Maximum SOC:", maxSOC);
-      Console.WriteLine("Minimum SOC:", minSOC);
-      Console.WriteLine("Average temperature:",temperatureAverage);
-      Console.WriteLine("Average SOC:", socAverage);
+      Console.WriteLine($"Maximum temperature:{maxTemperature}");
+      Console.WriteLine($"Minimum temperature:{minTemperature}"); 
+      Console.WriteLine($"Maximum SOC:{maxSOC}");
+      Console.WriteLine($"Minimum SOC:{minSOC}");
+      Console.WriteLine($"Average temperature:{temperatureAverage}");
+      Console.WriteLine($"Average SOC:{socAverage}");
 
     }
 
@@ -47,7 +47,7 @@ namespace Receiver
     private static float CalculateMovingAverage(List<float> sensorParameterList)
     {
       float movingaverage = 0;
-      for (int i = sensorParameterList.Count - 1; i < sensorParameterList.Count - 6 && i > 0; i++)
+       for (int i = sensorParameterList.Count - 1; i > sensorParameterList.Count - 6 && i > 0; i--)
       {
         movingaverage += sensorParameterList[i];
       }
