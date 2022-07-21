@@ -52,7 +52,7 @@ namespace Receiver
         movingaverage += sensorParameterList[i];
       }
 
-      return movingaverage;
+      return movingaverage/5;
     }
 
     public static List<SensorParameter> ReadSensorData()
