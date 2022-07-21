@@ -58,6 +58,7 @@ namespace Receiver
     public static List<SensorParameter> ReadSensorData()
     {
       string newLine = Console.ReadLine();
+      Console.WriteLine(newLine);
       List<SensorParameter> sensorParameters = JsonSerializer.Deserialize<List<SensorParameter>>(newLine);
       return sensorParameters;
     }
