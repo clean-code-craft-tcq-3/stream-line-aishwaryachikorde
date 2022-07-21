@@ -31,6 +31,9 @@ jobs:
     - name: Run project
       run:  dotnet run --project ./Sender/Sender/Sender.csproj
       
+    - name: build project
+      run: dotnet build --project ./Receiver/Receiver.csproj 
+      
     - name: integrate run
       run: dotnet run --project ./Sender/SensorSender/SensorSender/SensorSender.csproj | dotnet run --project ./Receiver/Receiver.csproj
 
