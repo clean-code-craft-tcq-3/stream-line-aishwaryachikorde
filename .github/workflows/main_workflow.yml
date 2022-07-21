@@ -27,6 +27,15 @@ jobs:
 
     - name: Run tests and collect coverage
       run: dotnet test ./Sender/SenderTests/SenderTests.csproj --collect:"XPlat Code Coverage"
+      
+    - name: Run project
+      run:  dotnet run --project ./Sender/Sender/Sender.csproj
+      
+    - name: Run project
+      run:  dotnet run --project ./Receiver/Receiver.csproj
+      
+    - name: integrate run
+      run: dotnet run --project ./Sender/SensorSender/SensorSender/SensorSender.csproj | ./Receiver/Receiver.csproj
 
     - name: Install coverage report generator
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
