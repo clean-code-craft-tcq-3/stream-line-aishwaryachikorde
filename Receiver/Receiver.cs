@@ -12,14 +12,14 @@ namespace Receiver
     [ExcludeFromCodeCoverage]
     static void Main(string[] args)
     {
-      List<SensorParameter> SensorParameters = ReadSensorData();
-      float maxTemperature = GetMaximumTemperature(SensorParameters);
-      float minTemperature = GetMinimumTemperature(SensorParameters);
-      float minSOC = GetMinimumSOC(SensorParameters);
-      float maxSOC= GetMaximumSOC(SensorParameters);
-      float socAverage = CalculateSOCAverage(SensorParameters);
-      float temperatureAverage = CalculateTemperatureAverage(SensorParameters);
-      printOnConsole(maxTemperature, minTemperature, minSOC, maxSOC, socAverage, temperatureAverage);
+     // List<SensorParameter> SensorParameters = ReadSensorData();
+      //float maxTemperature = GetMaximumTemperature(SensorParameters);
+      //float minTemperature = GetMinimumTemperature(SensorParameters);
+      //float minSOC = GetMinimumSOC(SensorParameters);
+      //float maxSOC= GetMaximumSOC(SensorParameters);
+      //float socAverage = CalculateSOCAverage(SensorParameters);
+      //float temperatureAverage = CalculateTemperatureAverage(SensorParameters);
+      //printOnConsole(maxTemperature, minTemperature, minSOC, maxSOC, socAverage, temperatureAverage);
 
     }
 
