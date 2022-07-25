@@ -1,4 +1,4 @@
-﻿namespace Sender
+﻿namespace Receiver
 {
   public class SensorParameter
   {
