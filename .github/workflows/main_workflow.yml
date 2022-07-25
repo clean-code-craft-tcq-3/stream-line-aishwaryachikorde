@@ -28,6 +28,9 @@ jobs:
     - name: Run tests and collect coverage
       run: dotnet test ./Sender/SenderTests/SenderTests.csproj --collect:"XPlat Code Coverage"
       
+    - name: Run tests and collect coverage for reciever
+      run: dotnet test ./Receiver/ReceiverTest.csproj  --collect:"XPlat Code Coverage"
+      
     - name: Run project
       run:  dotnet run --project ./Sender/Sender/Sender.csproj
       
