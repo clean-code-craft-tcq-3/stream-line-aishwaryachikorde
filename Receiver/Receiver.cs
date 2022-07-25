@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
-using Sender;
 
 namespace Receiver
 {
@@ -16,9 +15,9 @@ namespace Receiver
       float maxTemperature = GetMaximumTemperature(SensorParameters);
       float minTemperature = GetMinimumTemperature(SensorParameters);
       float minSOC = GetMinimumSOC(SensorParameters);
-      float maxSOC= GetMaximumSOC(SensorParameters);
-      float socAverage = CalculateSOCAverage(SensorParameters);
-      float temperatureAverage = CalculateTemperatureAverage(SensorParameters);
+      float maxSOC = GetMaximumSOC(SensorParameters);
+      float socAverage = GetMovingAverageForSOC(SensorParameters);
+      float temperatureAverage = GetMovingAverageForTemperature(SensorParameters);
       printOnConsole(maxTemperature, minTemperature, minSOC, maxSOC, socAverage, temperatureAverage);
 
     }
@@ -26,7 +25,7 @@ namespace Receiver
     private static void printOnConsole(float maxTemperature, float minTemperature, float minSOC, float maxSOC, float socAverage, float temperatureAverage)
     {
       Console.WriteLine($"Maximum temperature:{maxTemperature}");
-      Console.WriteLine($"Minimum temperature:{minTemperature}"); 
+      Console.WriteLine($"Minimum temperature:{minTemperature}");
       Console.WriteLine($"Maximum SOC:{maxSOC}");
       Console.WriteLine($"Minimum SOC:{minSOC}");
       Console.WriteLine($"Average temperature:{temperatureAverage}");
@@ -34,32 +33,38 @@ namespace Receiver
 
     }
 
-    public static float CalculateTemperatureAverage(List<SensorParameter> sensorParameterList)
+    public static float GetMovingAverageForTemperature(List<SensorParameter> sensorParameterList)
     {
 
       return CalculateMovingAverage(sensorParameterList.Select(SensorParameter => SensorParameter.Temperature).ToList());
     }
 
-    public static float CalculateSOCAverage(List<SensorParameter> sensorParameterList)
+    public static float GetMovingAverageForSOC(List<SensorParameter> sensorParameterList)
     {
       return CalculateMovingAverage(sensorParameterList.Select(SensorParameter => SensorParameter.StateOfCharge).ToList());
     }
+
     private static float CalculateMovingAverage(List<float> sensorParameterList)
     {
       float movingaverage = 0;
-       for (int i = sensorParameterList.Count - 1; i > sensorParameterList.Count - 6 && i > 0; i--)
+      for (int i = 0 ;i < sensorParameterList.Count; i++)
       {
         movingaverage += sensorParameterList[i];
       }
 
-      return movingaverage/5;
+      return movingaverage / sensorParameterList.Count;
     }
 
     public static List<SensorParameter> ReadSensorData()
     {
-      string newLine = Console.ReadLine();
-      Console.WriteLine(newLine);
-      List<SensorParameter> sensorParameters = JsonSerializer.Deserialize<List<SensorParameter>>(newLine);
+      string consoleData = Console.ReadLine();
+      List<SensorParameter> sensorParameters = JsonParser(consoleData);
+      return sensorParameters;
+    }
+
+    public static List<SensorParameter> JsonParser(string data)
+    {
+      List<SensorParameter> sensorParameters = JsonSerializer.Deserialize<List<SensorParameter>>(data);
       return sensorParameters;
     }
 
