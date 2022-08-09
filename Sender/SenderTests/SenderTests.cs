@@ -30,12 +30,14 @@ namespace SenderTests
     public void ConvertInputToJsonTest()
     {
       List<SensorParameter> parameterList = new List<SensorParameter>();
-      SensorParameter sensorData = new SensorParameter { Temperature = 9, StateOfCharge = 10 };
-      parameterList.Add(sensorData);
+      SensorParameter sensorData1 = new SensorParameter { Temperature = 9, StateOfCharge = 10 };
+      SensorParameter sensorData2 = new SensorParameter { Temperature = 15, StateOfCharge = 16 };
+      parameterList.Add(sensorData1);
+      parameterList.Add(sensorData2);
 
       string jsonString = DataProcessor.ConvertInputToJsonFormat(parameterList);
 
-      string expectedString = "[{\"Temperature\":9,\"StateOfCharge\":10}]";
+      string expectedString = "[{\"Temperature\":9,\"StateOfCharge\":10},{\"Temperature\":15,\"StateOfCharge\":16}]";
 
       Assert.AreEqual(jsonString, expectedString);
     }
