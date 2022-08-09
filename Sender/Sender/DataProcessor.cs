@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
 
 namespace Sender
@@ -26,13 +25,18 @@ namespace Sender
 
     private static void GenerateSensorData(string fileDirectory)
     {
+      int numberOfSamples = 50;
+      int maximumTemperature = 45;
+      int minimumTemperature = 0;
+      int maximumSoc = 80;
+      int minimumSoc = 20;
       Random temperatureData = new Random();
       Random stateOfChargeData = new Random();
       using StreamWriter writer = File.AppendText(Path.Combine(fileDirectory, "SensorReading.csv"));
-      for (int i = 1; i <= 50; i++)
+      for (int i = 1; i <= numberOfSamples; i++)
       {
-        int temperatureDataValue = temperatureData.Next(0, 45);
-        int chargeDataValue = stateOfChargeData.Next(20, 80);
+        int temperatureDataValue = temperatureData.Next(minimumTemperature, maximumTemperature);
+        int chargeDataValue = stateOfChargeData.Next(minimumSoc, maximumSoc);
         writer.Write(temperatureDataValue + "," + chargeDataValue + "\n");
       }
     }
