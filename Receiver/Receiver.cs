@@ -35,7 +35,6 @@ namespace Receiver
 
     public static float GetMovingAverageForTemperature(List<SensorParameter> sensorParameterList)
     {
-
       return CalculateMovingAverage(sensorParameterList.Select(SensorParameter => SensorParameter.Temperature).ToList());
     }
 
